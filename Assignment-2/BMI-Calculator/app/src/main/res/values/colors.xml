@@ -10,4 +10,5 @@
     <color name="card_bg">#FFFFFF</color>
     <color name="button_text">#FFFFFF</color>
     <color name="error_color">#F72585</color>
+    <color name="text_color">#202124</color>
 </resources>
