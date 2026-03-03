@@ -7,4 +7,10 @@
     <string name="weight_kg">Weight (kg)</string>
     <string name="bmi_calculator">BMI Calculator</string>
     <string name="check_your_health_status">Check your health status</string>
+    <string name="your_results">Your Results</string>
+    <string name="name">Name:</string>
+    <string name="age">Age:</string>
+    <string name="bmi">BMI:</string>
+    <string name="category">Category:</string>
+    <string name="bmi_result">BMI Result</string>
 </resources>

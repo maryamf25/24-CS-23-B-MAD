@@ -18,7 +18,7 @@
         android:textSize="16sp"
         android:layout_marginTop="8dp"
         android:textColor="@color/text_secondary"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/arbutus_slab"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -50,13 +50,17 @@
                 app:boxCornerRadiusBottomEnd="12dp"
                 app:boxCornerRadiusBottomStart="12dp"
                 app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusTopStart="12dp">
+                app:boxCornerRadiusTopStart="12dp"
+                android:fontFamily="@font/arbutus_slab"
+                app:boxStrokeColor="@color/primary_color"
+                app:hintTextColor="@color/primary_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
+                    android:fontFamily="@font/arbutus_slab"
                     android:textColor="@color/text_primary" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,13 +74,17 @@
                 app:boxCornerRadiusBottomEnd="12dp"
                 app:boxCornerRadiusBottomStart="12dp"
                 app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusTopStart="12dp">
+                app:boxCornerRadiusTopStart="12dp"
+                android:fontFamily="@font/arbutus_slab"
+                app:boxStrokeColor="@color/primary_color"
+                app:hintTextColor="@color/primary_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etAge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
+                    android:fontFamily="@font/arbutus_slab"
                     android:textColor="@color/text_primary" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,13 +106,17 @@
                     app:boxCornerRadiusBottomEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusTopEnd="12dp"
-                    app:boxCornerRadiusTopStart="12dp">
+                    app:boxCornerRadiusTopStart="12dp"
+                    android:fontFamily="@font/arbutus_slab"
+                app:boxStrokeColor="@color/primary_color"
+                app:hintTextColor="@color/primary_color">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etHeight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
+                        android:fontFamily="@font/arbutus_slab"
                         android:textColor="@color/text_primary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,13 +131,17 @@
                     app:boxCornerRadiusBottomEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusTopEnd="12dp"
-                    app:boxCornerRadiusTopStart="12dp">
+                    app:boxCornerRadiusTopStart="12dp"
+                    android:fontFamily="@font/arbutus_slab"
+                app:boxStrokeColor="@color/primary_color"
+                app:hintTextColor="@color/primary_color">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etWeight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
+                        android:fontFamily="@font/arbutus_slab"
                         android:textColor="@color/text_primary" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -140,6 +156,7 @@
                 android:textColor="@color/button_text"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/arbutus_slab"
                 app:backgroundTint="@color/primary_color"
                 app:cornerRadius="16dp" />
 
@@ -151,7 +168,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/arbutus_slab"
         android:text="@string/app_name"
         android:textColor="@color/text_primary"
         android:textSize="32sp"

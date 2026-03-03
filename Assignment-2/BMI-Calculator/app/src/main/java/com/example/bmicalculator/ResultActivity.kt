@@ -29,6 +29,12 @@ class ResultActivity : AppCompatActivity() {
             val weight = weightStr.toDouble()
             val heightCm = heightStr.toDouble()
 
+            if (heightCm <= 0.0 || weight <= 0.0) {
+                findViewById<TextView>(R.id.tvBMI)?.text = "Error: Invalid Input"
+                findViewById<TextView>(R.id.tvCategory)?.text = "Values must be > 0"
+                return
+            }
+
             val heightM = heightCm / 100.0
 
             val bmi = weight / (heightM * heightM)
