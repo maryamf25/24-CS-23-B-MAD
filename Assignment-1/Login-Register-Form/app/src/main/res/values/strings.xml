@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="user_price_input">Enter price</string>
+    <string name="calculate">Calculate</string>
+    <string name="clear">Clear</string>
+    <string name="user_input">Enter a number</string>
+    <string name="title_multiplier">Multiplier</string>
+    <string name="title_discount_calculator">Discount Calculator</string>
+    <string name="switch_to_discount">Switch to Discount Calculator</string>
+    <string name="switch_to_multiplier">Switch to Multiplier</string>
+    <string name="textview">TextView</string>
+    <string name="email">Email</string>
+    <string name="login">LOGIN</string>
+    <string name="password_hint">Password</string>
+    <string name="register_title">REGISTER</string>
+    <string name="full_name">Full Name</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
+    <string name="gender_title">Select Gender:</string>
+    <string name="city_title">Select City:</string>
+    <string name="terms_conditions">I agree to the Terms and Conditions</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_register">Register</string>
+    <string name="switch_to_register">Don\'t have an account? Register here.</string>
+    <string name="switch_to_login">Already have an account? Login here.</string>
+    <string name="logout">Log Out</string>
+</resources>

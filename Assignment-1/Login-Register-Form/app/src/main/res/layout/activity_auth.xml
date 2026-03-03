@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".AuthActivity">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/authTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="@string/login"
+            android:textColor="#2196F3"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/fullNameEditText"
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:autofillHints=""
+            android:hint="@string/full_name"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:autofillHints=""
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp" />
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:autofillHints=""
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            android:minHeight="48dp" />
+
+        <EditText
+            android:id="@+id/confirmPasswordEditText"
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:autofillHints=""
+            android:hint="@string/confirm_password_hint"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/genderLabelTextView"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:text="@string/gender_title"
+            android:visibility="gone" />
+
+        <RadioGroup
+            android:id="@+id/genderRadioGroup"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/radioMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_male" />
+
+            <RadioButton
+                android:id="@+id/radioFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_female" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/cityLabelTextView"
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
+            android:text="@string/city_title"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/citySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone" />
+
+        <CheckBox
+            android:id="@+id/termsCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@string/terms_conditions"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/actionButton"
+            android:layout_width="343dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/btn_login" />
+
+        <TextView
+            android:id="@+id/switchModeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_to_register"
+            android:textColor="#3F51B5"
+            android:padding="8dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>
