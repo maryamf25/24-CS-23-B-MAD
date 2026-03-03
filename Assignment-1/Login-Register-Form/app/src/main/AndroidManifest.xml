@@ -10,23 +10,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication">
+        android:theme="@style/Theme.LoginRegisterForm">
+        <activity
+            android:name=".DiscountActivity"
+            android:exported="false" />
         <activity
             android:name=".AuthActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".DiscountActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
-            android:exported="false"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.MyApplication" />
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>

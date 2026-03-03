@@ -19,7 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Login-Register-Form"
+rootProject.name = "Login Register Form"
 include(":app")
-include(":app")
- 

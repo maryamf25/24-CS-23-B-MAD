@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Login Register Form</string>
     <string name="user_price_input">Enter price</string>
     <string name="calculate">Calculate</string>
     <string name="clear">Clear</string>

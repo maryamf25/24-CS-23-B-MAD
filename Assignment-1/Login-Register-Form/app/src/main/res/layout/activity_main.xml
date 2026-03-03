@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="@string/title_multiplier"
-        android:textSize="24sp"
+        android:textColor="#2196F3"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/userInput"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,8 +50,8 @@
 
     <Button
         android:id="@+id/CalculateButton"
-        android:layout_width="87dp"
-        android:layout_height="48dp"
+        android:layout_width="93dp"
+        android:layout_height="41dp"
         android:minHeight="48dp"
         android:text="@string/calculate"
         android:textSize="10sp"
@@ -78,8 +79,8 @@
 
     <Button
         android:id="@+id/clearButton"
-        android:layout_width="87dp"
-        android:layout_height="48dp"
+        android:layout_width="82dp"
+        android:layout_height="42dp"
         android:minHeight="48dp"
         android:text="@string/clear"
         android:textSize="10sp"
