@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="6dp"
+    app:cardBackgroundColor="@color/surface_dark"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvCardName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="The Monal"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvCardRating" />
+
+        <TextView
+            android:id="@+id/tvCardAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Pir Sohawa, Islamabad"
+            android:textColor="@color/text_muted"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCardName"
+            app:layout_constraintEnd_toStartOf="@id/tvCardRating" />
+
+        <TextView
+            android:id="@+id/tvCardCuisine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Pakistani • $$$"
+            android:textColor="@color/accent_orange"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCardAddress" />
+
+        <TextView
+            android:id="@+id/tvCardMustTry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Must Try: Cheese Naan"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:background="#22ffffff"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCardCuisine" />
+
+        <TextView
+            android:id="@+id/tvCardRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rating_bg"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp"
+            tools:text="⭐ 8/10"
+            android:textColor="@color/primary_orange"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

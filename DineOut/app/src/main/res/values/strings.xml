@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">DineOut</string>
+    <string name="visited">Visited</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="add_restaurant">Add Restaurant</string>
+
+    <string-array name="cuisine_options">
+        <item>All Cuisines</item>
+        <item>Pakistani / Desi</item>
+        <item>Fast Food</item>
+        <item>Chinese</item>
+        <item>Italian</item>
+        <item>BBQ</item>
+        <item>Continental</item>
+        <item>Cafe / Desserts</item>
+    </string-array>
+    <string name="cuisine_price_format">%1$s • %2$s</string>
+    <string name="rating_format">⭐ %1$d/10</string>
+    <string name="must_try_format">Must Try: %1$s</string>
+</resources>
