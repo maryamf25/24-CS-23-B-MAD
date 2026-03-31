@@ -1,13 +1,20 @@
 package com.example.dineout.activities
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
+import android.widget.AdapterView
+import android.widget.LinearLayout
+import android.widget.RadioGroup
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dineout.R
 import com.example.dineout.adapters.RestaurantAdapter
 import com.example.dineout.data.DataManager
+import com.example.dineout.models.Restaurant
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.tabs.TabLayout
 
@@ -16,55 +23,79 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RestaurantAdapter
     private lateinit var tabLayout: TabLayout
+    private lateinit var layoutBudgetDashboard: View
+    private lateinit var tvTotalSpend: TextView
+    private lateinit var tvSpendStats: TextView
+    private lateinit var fabAdd: ExtendedFloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // 1. Load sample data from DataManager on app start
         DataManager.loadSampleData()
 
-        // 2. Find UI elements by their IDs
         recyclerView = findViewById(R.id.recyclerView)
         tabLayout = findViewById(R.id.tabLayout)
-        val fabAdd = findViewById<ExtendedFloatingActionButton>(R.id.fabAdd)
+        layoutBudgetDashboard = findViewById(R.id.layoutBudgetDashboard)
+        tvTotalSpend = findViewById(R.id.tvTotalSpend)
+        tvSpendStats = findViewById(R.id.tvSpendStats)
+        fabAdd = findViewById(R.id.fabAdd)
 
-        // 3. Configure RecyclerView with a vertical layout manager
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Initially show only "Wishlist" restaurants
-        val initialData = DataManager.getByStatus("wishlist")
+        adapter = RestaurantAdapter(ArrayList()) { position ->
+            val currentStatus = if (tabLayout.selectedTabPosition == 0) "wishlist" else "visited"
+            val currentList = DataManager.getByStatus(currentStatus)
 
-        // Provide data to the Adapter and attach it to the RecyclerView
-        adapter = RestaurantAdapter(initialData) { position ->
-            // This runs when a card is clicked
-            Toast.makeText(this, "Restaurant Clicked!", Toast.LENGTH_SHORT).show()
+            val clickedRestaurant = currentList[position]
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("RES_NAME", clickedRestaurant.name)
+            startActivity(intent)
         }
+
         recyclerView.adapter = adapter
 
-        // 4. Handle Tab clicks (Wishlist vs Visited)
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                when (tab?.position) {
-                    0 -> adapter.updateData(DataManager.getByStatus("wishlist")) // First Tab
-                    1 -> adapter.updateData(DataManager.getByStatus("visited"))  // Second Tab
-                }
+                loadFilteredData()
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
-        // 5. Handle FAB (+) button click
         fabAdd.setOnClickListener {
-            val intent = android.content.Intent(this, AddEditActivity::class.java)
+            val intent = Intent(this, AddEditActivity::class.java)
             startActivity(intent)
         }
+
+        loadFilteredData()
     }
 
     override fun onResume() {
         super.onResume()
-        // Refresh the list based on current tab
+        loadFilteredData()
+    }
+
+    private fun loadFilteredData() {
         val currentStatus = if (tabLayout.selectedTabPosition == 0) "wishlist" else "visited"
-        adapter.updateData(DataManager.getByStatus(currentStatus))
+        var currentList = DataManager.getByStatus(currentStatus)
+
+        // Hide FAB on Visited tab, show on Wishlist tab
+        if (currentStatus == "visited") {
+            layoutBudgetDashboard.visibility = View.VISIBLE
+            fabAdd.visibility = View.GONE
+
+            val totalSpend = currentList.sumOf { it.spendAmount }
+            val visitedCount = currentList.size
+            val avgSpend = if (visitedCount > 0) totalSpend / visitedCount else 0
+
+            tvTotalSpend.text = "Rs. $totalSpend"
+            tvSpendStats.text = "$visitedCount outings · avg Rs. $avgSpend"
+        } else {
+            layoutBudgetDashboard.visibility = View.GONE
+            fabAdd.visibility = View.VISIBLE
+        }
+
+        adapter.updateData(currentList)
     }
 }

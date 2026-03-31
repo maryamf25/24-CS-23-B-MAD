@@ -12,4 +12,6 @@
     <color name="text_muted">#6e6e8a</color>
     <color name="divider_color">#2e2e3e</color>
     <color name="input_background">#1d1d29</color>
+    <color name="input_bg">#2A2A2A</color>
+    <color name="badge_green_text">#2a7a4a</color>
 </resources>

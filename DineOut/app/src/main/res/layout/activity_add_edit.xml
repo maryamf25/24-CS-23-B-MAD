@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Restaurant"
+            android:text="Add to Wishlist"
             android:textColor="@color/primary_orange"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -48,27 +48,18 @@
                 <RadioButton android:id="@+id/rbExpensive" android:layout_width="0dp" android:layout_height="48dp" android:text="$$$" android:textColor="@color/text_primary" android:button="@null" android:gravity="center" android:layout_weight="1" android:background="@drawable/radio_selector"/>
             </RadioGroup>
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="EXPERIENCE" android:textColor="@color/text_secondary" android:textSize="12sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
-            <TextView android:id="@+id/tvRatingLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Expected Rating: 5/10" android:textColor="@color/accent_orange" android:textStyle="bold"/>
-            <SeekBar android:id="@+id/seekBarRating" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="10" android:progress="5" android:progressTint="@color/primary_orange" android:thumbTint="@color/primary_orange" android:layout_marginBottom="24dp" android:paddingTop="12dp"/>
-
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="24dp">
-                <Button android:id="@+id/btnDate" android:layout_width="0dp" android:layout_weight="1" android:layout_height="56dp" android:text="Select Date" android:backgroundTint="@color/surface_dark" android:textColor="@color/white" android:layout_marginEnd="10dp" android:textAllCaps="false"/>
-                <Button android:id="@+id/btnTime" android:layout_width="0dp" android:layout_weight="1" android:layout_height="56dp" android:text="Select Time" android:backgroundTint="@color/surface_dark" android:textColor="@color/white" android:textAllCaps="false"/>
-            </LinearLayout>
-
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PLANS &amp; PREFERENCES" android:textColor="@color/text_secondary" android:textSize="12sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Occasion" android:textColor="@color/text_muted" android:layout_marginBottom="8dp" android:textSize="13sp"/>
-            <GridLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="2" android:layout_marginBottom="24dp">
+            <GridLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="2" android:layout_marginBottom="16dp">
                 <CheckBox android:id="@+id/cbFamily" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Family" android:textColor="@color/text_primary" android:buttonTint="@color/primary_orange"/>
                 <CheckBox android:id="@+id/cbDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Date Night" android:textColor="@color/text_primary" android:buttonTint="@color/primary_orange"/>
                 <CheckBox android:id="@+id/cbFriends" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Friends" android:textColor="@color/text_primary" android:buttonTint="@color/primary_orange"/>
                 <CheckBox android:id="@+id/cbSolo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Solo" android:textColor="@color/text_primary" android:buttonTint="@color/primary_orange"/>
             </GridLayout>
 
-            <EditText android:id="@+id/etDish" android:layout_width="match_parent" android:layout_height="56dp" android:hint="Must Try Dish" android:paddingHorizontal="16dp" android:textColorHint="@color/text_muted" android:textColor="@color/text_primary" android:background="@drawable/input_bg" android:layout_marginBottom="12dp"/>
-            <EditText android:id="@+id/etNotes" android:layout_width="match_parent" android:layout_height="100dp" android:hint="Any Notes?" android:padding="16dp" android:gravity="top" android:textColorHint="@color/text_muted" android:textColor="@color/text_primary" android:background="@drawable/input_bg" android:layout_marginBottom="32dp"/>
+            <EditText android:id="@+id/etDish" android:layout_width="match_parent" android:layout_height="56dp" android:hint="Must Try Dish" android:paddingHorizontal="16dp" android:textColorHint="@color/text_muted" android:textColor="@color/text_primary" android:background="@drawable/input_bg" android:layout_marginBottom="32dp"/>
 
-            <Button android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="64dp" android:text="Save Restaurant" android:backgroundTint="@color/primary_orange" android:textColor="@color/white" android:textSize="18sp" android:textStyle="bold" android:layout_marginBottom="32dp"/>
+            <Button android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="64dp" android:text="Save to Wishlist" android:backgroundTint="@color/primary_orange" android:textColor="@color/white" android:textSize="18sp" android:textStyle="bold" android:layout_marginBottom="32dp"/>
 
         </LinearLayout>
     </ScrollView>

@@ -15,6 +15,11 @@
         <item>Cafe / Desserts</item>
     </string-array>
     <string name="cuisine_price_format">%1$s • %2$s</string>
-    <string name="rating_format">⭐ %1$d/10</string>
+    <string name="rating_format">⭐ %1$d/5</string>
     <string name="must_try_format">Must Try: %1$s</string>
+    <string-array name="sort_options">
+        <item>Default</item>
+        <item>Most Expensive</item>
+        <item>Least Expensive</item>
+    </string-array>
 </resources>
