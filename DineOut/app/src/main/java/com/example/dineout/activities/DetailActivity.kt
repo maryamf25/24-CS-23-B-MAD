@@ -30,7 +30,6 @@ class DetailActivity : AppCompatActivity() {
         val tvPrice = findViewById<TextView>(R.id.tvDetailPrice)
         val tvDish = findViewById<TextView>(R.id.tvDetailDish)
         val tvTags = findViewById<TextView>(R.id.tvDetailTags)
-        val btnDelete = findViewById<ImageView>(R.id.btnDelete)
         val btnMarkVisited = findViewById<Button>(R.id.btnMarkVisited)
 
         val layoutReview = findViewById<LinearLayout>(R.id.layoutReview)
@@ -42,6 +41,20 @@ class DetailActivity : AppCompatActivity() {
 
         tvName.text = restaurant.name
         tvLocation.text = "📍 ${restaurant.address}"
+
+        tvLocation.setOnClickListener {
+            val address = "${restaurant.name} ${restaurant.address}"
+            val gmmIntentUri = android.net.Uri.parse("geo:0,0?q=${android.net.Uri.encode(address)}")
+            val mapIntent = android.content.Intent(android.content.Intent.ACTION_VIEW, gmmIntentUri)
+            
+            mapIntent.setPackage("com.google.android.apps.maps")
+            
+            if (mapIntent.resolveActivity(packageManager) != null) {
+                startActivity(mapIntent)
+            } else {
+                startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW, gmmIntentUri))
+            }
+        }
         tvCuisine.text = restaurant.cuisine
         tvPrice.text = restaurant.priceRange
         tvDish.text = restaurant.mustTryDish
@@ -66,10 +79,53 @@ class DetailActivity : AppCompatActivity() {
             layoutReview.visibility = View.GONE
         }
 
-        btnDelete.setOnClickListener {
-            DataManager.deleteRestaurant(restaurant.name)
-            Toast.makeText(this, "Restaurant Deleted!", Toast.LENGTH_SHORT).show()
-            finish()
+        val btnOptions = findViewById<ImageView>(R.id.btnOptions)
+        btnOptions.setOnClickListener { view ->
+            val wrapper = android.view.ContextThemeWrapper(this, R.style.CustomPopupMenu)
+            val popup = androidx.appcompat.widget.PopupMenu(wrapper, view)
+            popup.inflate(R.menu.detail_menu)
+            
+            // Force show icons in PopupMenu
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                popup.setForceShowIcon(true)
+            } else {
+                try {
+                    val fieldMPopup = androidx.appcompat.widget.PopupMenu::class.java.getDeclaredField("mPopup")
+                    fieldMPopup.isAccessible = true
+                    val mPopup = fieldMPopup.get(popup)
+                    mPopup.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java).invoke(mPopup, true)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+
+            popup.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_share -> {
+                        val shareText = "Hey! Check out ${restaurant.name} (${restaurant.cuisine}). We should definitely go there! 🍕🍽️\n📍 Location: ${restaurant.address}"
+                        val shareIntent = android.content.Intent(android.content.Intent.ACTION_SEND)
+                        shareIntent.type = "text/plain"
+                        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareText)
+                        startActivity(android.content.Intent.createChooser(shareIntent, "Share with friends"))
+                        true
+                    }
+                    R.id.action_edit -> {
+                        val editIntent = android.content.Intent(this, AddEditActivity::class.java)
+                        editIntent.putExtra("EDIT_RES_NAME", restaurant.name)
+                        startActivity(editIntent)
+                        finish()
+                        true
+                    }
+                    R.id.action_delete -> {
+                        DataManager.deleteRestaurant(restaurant.name)
+                        Toast.makeText(this, "Restaurant Deleted!", Toast.LENGTH_SHORT).show()
+                        finish()
+                        true
+                    }
+                    else -> false
+                }
+            }
+            popup.show()
         }
 
         btnMarkVisited.setOnClickListener {

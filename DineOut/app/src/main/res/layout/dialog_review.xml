@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:background="@color/surface_dark"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:radius="16dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -13,27 +14,35 @@
         android:textColor="@color/primary_orange"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" android:fontFamily="@font/poppins_family"/>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="12dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="OVERALL RATING"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/divider_color"
         android:textSize="12sp"
         android:textStyle="bold"
         android:letterSpacing="0.1"
-        android:layout_marginBottom="8dp"/>
+        android:fontFamily="@font/poppins_family"/>
 
     <TextView
         android:id="@+id/tvDialogRatingVal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="⭐ 3/5"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/divider_color"
         android:textSize="16sp"
-        android:layout_marginBottom="12dp"/>
-
+        android:fontFamily="@font/poppins_family"/>
+</LinearLayout>
     <SeekBar
         android:id="@+id/sbDialogRating"
         android:layout_width="match_parent"
@@ -48,43 +57,52 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="AMOUNT SPENT"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/divider_color"
         android:textSize="12sp"
         android:textStyle="bold"
         android:letterSpacing="0.1"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp" android:fontFamily="@font/poppins_family"/>
 
     <EditText
         android:id="@+id/etDialogSpend"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:textSize="16sp"
         android:hint="How much did you spend? (Rs.)"
         android:inputType="number"
         android:textColorHint="@color/text_muted"
         android:textColor="@color/text_primary"
         android:background="@drawable/input_bg"
         android:paddingHorizontal="16dp"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="24dp" android:fontFamily="@font/poppins_family"/>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="12dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="VALUE FOR MONEY"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/divider_color"
         android:textSize="12sp"
         android:textStyle="bold"
         android:letterSpacing="0.1"
-        android:layout_marginBottom="8dp"/>
+        android:fontFamily="@font/poppins_family"/>
 
     <TextView
         android:id="@+id/tvDialogWorthVal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="⭐ 3/5"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/divider_color"
         android:textSize="16sp"
-        android:layout_marginBottom="12dp"/>
-
+        android:fontFamily="@font/poppins_family"/>
+</LinearLayout>
     <SeekBar
         android:id="@+id/sbDialogWorth"
         android:layout_width="match_parent"
@@ -99,23 +117,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NOTES"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/divider_color"
         android:textSize="12sp"
         android:textStyle="bold"
         android:letterSpacing="0.1"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp" android:fontFamily="@font/poppins_family"/>
 
     <EditText
         android:id="@+id/etDialogNotes"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:textSize="16sp"
         android:hint="Any notes? (e.g. Food was great!)"
         android:textColorHint="@color/text_muted"
         android:textColor="@color/text_primary"
         android:background="@drawable/input_bg"
         android:padding="12dp"
         android:gravity="top"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="24dp" android:fontFamily="@font/poppins_family"/>
 
     <Button
         android:id="@+id/btnSubmitReview"
@@ -124,6 +143,7 @@
         android:text="Save &amp; Move to Visited"
         android:backgroundTint="@color/primary_orange"
         android:textColor="@color/white"
-        android:textStyle="bold"/>
+        android:textStyle="bold" android:fontFamily="@font/poppins_family"/>
 
 </LinearLayout>
+
