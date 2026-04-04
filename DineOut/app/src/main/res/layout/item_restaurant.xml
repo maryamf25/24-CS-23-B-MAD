@@ -36,7 +36,7 @@
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:visibility="gone"
-                android:layout_marginEnd="8dp" />
+                android:layout_marginEnd="8dp"  android:fontFamily="@font/poppins_family"/>
 
             <TextView
                 android:id="@+id/tvCardCuisine"
@@ -49,7 +49,7 @@
                 android:textColor="@color/primary_orange"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:layout_marginEnd="8dp" />
+                android:layout_marginEnd="8dp"  android:fontFamily="@font/poppins_family"/>
 
             <TextView
                 android:id="@+id/tvCardPrice"
@@ -62,7 +62,7 @@
                 android:textColor="@color/text_muted"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:layout_marginEnd="8dp" />
+                android:layout_marginEnd="8dp"  android:fontFamily="@font/poppins_family"/>
 
             <Space
                 android:layout_width="0dp"
@@ -80,7 +80,7 @@
                 android:textColor="@color/primary_orange"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:visibility="gone" />
+                android:visibility="gone"  android:fontFamily="@font/poppins_family"/>
         </LinearLayout>
 
         <!-- Restaurant Name -->
@@ -89,9 +89,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="The Monal"
-            android:textColor="@color/text_primary"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textColor="@color/primary_orange"
+            android:fontFamily="@font/hamburger"
+            android:textSize="24sp"
             android:layout_marginBottom="4dp" />
 
         <!-- Address -->
@@ -100,9 +100,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Pir Sohawa, Islamabad"
-            android:textColor="@color/text_muted"
+            android:textColor="@color/divider_color"
             android:textSize="12sp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"  android:fontFamily="@font/poppins_family"/>
 
         <!-- Tags/Occasions -->
         <LinearLayout
@@ -123,7 +123,7 @@
                 android:textColor="@color/text_muted"
                 android:textSize="10sp"
                 android:layout_marginEnd="6dp"
-                tools:text="Date Night" />
+                tools:text="Date Night"  android:fontFamily="@font/poppins_family"/>
 
             <TextView
                 android:id="@+id/tvTag2"
@@ -135,7 +135,7 @@
                 android:textColor="@color/text_muted"
                 android:textSize="10sp"
                 android:visibility="gone"
-                tools:text="Family" />
+                tools:text="Family"  android:fontFamily="@font/poppins_family"/>
         </LinearLayout>
 
         <!-- Rating Bar -->
@@ -164,7 +164,7 @@
                 android:textColor="@color/primary_orange"
                 android:textStyle="bold"
                 android:textSize="13sp"
-                android:layout_marginEnd="6dp" />
+                android:layout_marginEnd="6dp"  android:fontFamily="@font/poppins_family"/>
 
             <TextView
                 android:id="@+id/tvCardStars"
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 tools:text="★★★★☆"
                 android:textColor="@color/primary_orange"
-                android:textSize="12sp" />
+                android:textSize="12sp"  android:fontFamily="@font/poppins_family"/>
         </LinearLayout>
 
         <!-- Best Dish Section (Visible only for Visited) -->
@@ -196,9 +196,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Best Dish:"
-                android:textColor="@color/text_muted"
+                android:textColor="@color/divider_color"
                 android:textSize="10sp"
-                android:layout_marginBottom="4dp" />
+                android:layout_marginBottom="4dp"  android:fontFamily="@font/poppins_family"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -214,7 +214,7 @@
                     tools:text="Nihari"
                     android:textColor="@color/primary_orange"
                     android:textStyle="bold"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"  android:fontFamily="@font/poppins_family"/>
 
                 <TextView
                     android:id="@+id/tvBestDishStars"
@@ -222,9 +222,10 @@
                     android:layout_height="wrap_content"
                     tools:text="★★★★★"
                     android:textColor="@color/primary_orange"
-                    android:textSize="11sp" />
+                    android:textSize="11sp"  android:fontFamily="@font/poppins_family"/>
             </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
+

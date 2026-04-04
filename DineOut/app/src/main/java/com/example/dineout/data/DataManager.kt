@@ -28,6 +28,15 @@ object DataManager {
     fun addRestaurant(restaurant: Restaurant) {
         restaurantList.add(restaurant)
     }
+
+    fun updateRestaurant(oldName: String, updatedRestaurant: Restaurant) {
+        val index = restaurantList.indexOfFirst { it.name == oldName }
+        if (index != -1) {
+            restaurantList[index] = updatedRestaurant
+        } else {
+            restaurantList.add(updatedRestaurant)
+        }
+    }
     fun getRestaurantByName(name: String): Restaurant? {
         return restaurantList.find { it.name == name }
     }

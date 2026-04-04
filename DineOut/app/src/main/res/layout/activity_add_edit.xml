@@ -14,12 +14,13 @@
         android:background="@color/bg_dark">
 
         <TextView
+            android:id="@+id/tvToolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add to Wishlist"
             android:textColor="@color/primary_orange"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/hamburger"
+            android:textSize="32sp" />
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
@@ -33,34 +34,81 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BASIC INFO" android:textColor="@color/text_secondary" android:textSize="12sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
-            <EditText android:id="@+id/etName" android:layout_width="match_parent" android:layout_height="56dp" android:hint="Restaurant Name" android:paddingHorizontal="16dp" android:textColorHint="@color/text_muted" android:textColor="@color/text_primary" android:background="@drawable/input_bg" android:layout_marginBottom="12dp"/>
-            <EditText android:id="@+id/etAddress" android:layout_width="match_parent" android:layout_height="56dp" android:hint="Location / Address" android:paddingHorizontal="16dp" android:textColorHint="@color/text_muted" android:textColor="@color/text_primary" android:background="@drawable/input_bg" android:layout_marginBottom="24dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BASIC INFO" android:textColor="@color/text_primary" android:textSize="12sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp" android:fontFamily="@font/poppins_family"/>
+            <EditText android:id="@+id/etName" android:layout_width="match_parent" android:layout_height="56dp" android:hint="Restaurant Name" android:paddingHorizontal="16dp" android:textColorHint="@color/text_muted" android:textColor="@color/text_primary" android:background="@drawable/input_bg" android:layout_marginBottom="12dp" android:fontFamily="@font/poppins_family"/>
+            <EditText android:id="@+id/etAddress" android:layout_width="match_parent" android:layout_height="56dp" android:hint="Location / Address" android:paddingHorizontal="16dp" android:textColorHint="@color/text_muted" android:textColor="@color/text_primary" android:background="@drawable/input_bg" android:layout_marginBottom="24dp" android:fontFamily="@font/poppins_family"/>
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DETAILS" android:textColor="@color/text_secondary" android:textSize="12sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cuisine Type" android:textColor="@color/text_muted" android:layout_marginBottom="4dp" android:textSize="13sp"/>
-            <Spinner android:id="@+id/spinnerCuisine" android:layout_width="match_parent" android:layout_height="56dp" android:entries="@array/cuisine_options" android:background="@drawable/input_bg" android:layout_marginBottom="16dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DETAILS" android:textColor="@color/text_primary" android:textSize="12sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp" android:fontFamily="@font/poppins_family"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cuisine Type" android:textColor="@color/text_primary" android:layout_marginBottom="4dp" android:textSize="13sp" android:fontFamily="@font/poppins_family"/>
+            <Spinner android:id="@+id/spinnerCuisine" android:layout_width="match_parent" android:layout_height="56dp" android:entries="@array/cuisine_options" android:background="@drawable/input_bg" android:layout_marginBottom="16dp" android:popupTheme="@style/DarkPopupMenuTheme"/>
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Price Range" android:textColor="@color/text_muted" android:layout_marginBottom="8dp" android:textSize="13sp"/>
-            <RadioGroup android:id="@+id/rgPrice" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="24dp" android:background="@drawable/input_bg" android:padding="4dp">
-                <RadioButton android:id="@+id/rbCheap" android:layout_width="0dp" android:layout_height="48dp" android:text="$" android:textColor="@color/text_primary" android:button="@null" android:gravity="center" android:layout_weight="1" android:background="@drawable/radio_selector" android:checked="true"/>
-                <RadioButton android:id="@+id/rbMedium" android:layout_width="0dp" android:layout_height="48dp" android:text="$$" android:textColor="@color/text_primary" android:button="@null" android:gravity="center" android:layout_weight="1" android:background="@drawable/radio_selector"/>
-                <RadioButton android:id="@+id/rbExpensive" android:layout_width="0dp" android:layout_height="48dp" android:text="$$$" android:textColor="@color/text_primary" android:button="@null" android:gravity="center" android:layout_weight="1" android:background="@drawable/radio_selector"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Price Range" android:textColor="@color/text_primary" android:layout_marginBottom="8dp" android:textSize="13sp" android:fontFamily="@font/poppins_family"/>
+            <RadioGroup android:id="@+id/rgPrice" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="24dp" android:padding="4dp">
+                <RadioButton android:id="@+id/rbCheap" android:layout_width="0dp" android:layout_height="48dp" android:text="$" android:fontFamily="@font/poppins_family" android:textColor="@color/bg_dark" android:button="@null" android:gravity="center" android:layout_weight="1" android:background="@drawable/radio_selector" android:checked="true" android:layout_marginEnd="12dp"/>
+                <RadioButton android:id="@+id/rbMedium" android:layout_width="0dp" android:layout_height="48dp" android:text="$$" android:fontFamily="@font/poppins_family" android:textColor="@color/bg_dark" android:button="@null" android:gravity="center" android:layout_weight="1" android:background="@drawable/radio_selector" android:layout_marginEnd="12dp"/>
+                <RadioButton android:id="@+id/rbExpensive" android:layout_width="0dp" android:layout_height="48dp" android:text="$$$" android:fontFamily="@font/poppins_family" android:textColor="@color/bg_dark" android:button="@null" android:gravity="center" android:layout_weight="1" android:background="@drawable/radio_selector"/>
             </RadioGroup>
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PLANS &amp; PREFERENCES" android:textColor="@color/text_secondary" android:textSize="12sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Occasion" android:textColor="@color/text_muted" android:layout_marginBottom="8dp" android:textSize="13sp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PLANS &amp; PREFERENCES" android:textColor="@color/text_primary" android:textSize="12sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp" android:fontFamily="@font/poppins_family"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Occasion" android:textColor="@color/text_primary" android:layout_marginBottom="8dp" android:textSize="13sp" android:fontFamily="@font/poppins_family"/>
             <GridLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="2" android:layout_marginBottom="16dp">
-                <CheckBox android:id="@+id/cbFamily" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Family" android:textColor="@color/text_primary" android:buttonTint="@color/primary_orange"/>
-                <CheckBox android:id="@+id/cbDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Date Night" android:textColor="@color/text_primary" android:buttonTint="@color/primary_orange"/>
-                <CheckBox android:id="@+id/cbFriends" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Friends" android:textColor="@color/text_primary" android:buttonTint="@color/primary_orange"/>
-                <CheckBox android:id="@+id/cbSolo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Solo" android:textColor="@color/text_primary" android:buttonTint="@color/primary_orange"/>
+                <CheckBox android:id="@+id/cbFamily" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Family" android:textColor="@color/text_primary" android:buttonTint="@color/primary_orange" android:fontFamily="@font/poppins_family"/>
+                <CheckBox android:id="@+id/cbDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Date Night" android:textColor="@color/text_primary" android:buttonTint="@color/primary_orange" android:fontFamily="@font/poppins_family"/>
+                <CheckBox android:id="@+id/cbFriends" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Friends" android:textColor="@color/text_primary" android:buttonTint="@color/primary_orange" android:fontFamily="@font/poppins_family"/>
+                <CheckBox android:id="@+id/cbSolo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Solo" android:textColor="@color/text_primary" android:buttonTint="@color/primary_orange" android:fontFamily="@font/poppins_family"/>
             </GridLayout>
 
-            <EditText android:id="@+id/etDish" android:layout_width="match_parent" android:layout_height="56dp" android:hint="Must Try Dish" android:paddingHorizontal="16dp" android:textColorHint="@color/text_muted" android:textColor="@color/text_primary" android:background="@drawable/input_bg" android:layout_marginBottom="32dp"/>
+            <EditText android:id="@+id/etDish" android:layout_width="match_parent" android:layout_height="56dp" android:hint="Must Try Dish" android:paddingHorizontal="16dp" android:textColorHint="@color/text_muted" android:textColor="@color/text_primary" android:background="@drawable/input_bg" android:layout_marginBottom="32dp" android:fontFamily="@font/poppins_family"/>
 
-            <Button android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="64dp" android:text="Save to Wishlist" android:backgroundTint="@color/primary_orange" android:textColor="@color/white" android:textSize="18sp" android:textStyle="bold" android:layout_marginBottom="32dp"/>
+            <LinearLayout
+                android:id="@+id/reviewedSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="REVIEW DETAILS" android:textColor="@color/divider_color" android:textSize="12sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp" android:fontFamily="@font/poppins_family"/>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Rating" android:textColor="@color/text_muted" android:textSize="13sp" android:fontFamily="@font/poppins_family"/>
+                    <TextView android:id="@+id/tvRatingLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0/5" android:textColor="@color/primary_orange" android:textSize="14sp" android:textStyle="bold" android:fontFamily="@font/poppins_family"/>
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/sbEditRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="5"
+                    android:progress="0"
+                    android:progressTint="@color/primary_orange"
+                    android:thumbTint="@color/primary_orange"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Spent (Rs)" android:textColor="@color/text_muted" android:layout_marginBottom="4dp" android:textSize="13sp" android:fontFamily="@font/poppins_family"/>
+                <EditText android:id="@+id/etEditSpend" android:layout_width="match_parent" android:layout_height="56dp" android:inputType="number" android:hint="e.g. 1500" android:paddingHorizontal="16dp" android:textColorHint="@color/text_muted" android:textColor="@color/text_primary" android:background="@drawable/input_bg" android:layout_marginBottom="16dp" android:fontFamily="@font/poppins_family"/>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Value For Money" android:textColor="@color/text_muted" android:textSize="13sp" android:fontFamily="@font/poppins_family"/>
+                    <TextView android:id="@+id/tvWorthLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0/5" android:textColor="@color/primary_orange" android:textSize="14sp" android:textStyle="bold" android:fontFamily="@font/poppins_family"/>
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/sbEditWorth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="5"
+                    android:progress="0"
+                    android:progressTint="@color/primary_orange"
+                    android:thumbTint="@color/primary_orange"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Review Notes" android:textColor="@color/text_muted" android:layout_marginBottom="4dp" android:textSize="13sp" android:fontFamily="@font/poppins_family"/>
+                <EditText android:id="@+id/etEditNotes" android:layout_width="match_parent" android:layout_height="100dp" android:gravity="top|start" android:inputType="textMultiLine" android:hint="Write your experience..." android:padding="16dp" android:textColorHint="@color/text_muted" android:textColor="@color/text_primary" android:background="@drawable/input_bg" android:layout_marginBottom="32dp" android:fontFamily="@font/poppins_family"/>
+            </LinearLayout>
+
+            <Button android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="64dp" android:text="Save to Wishlist" android:backgroundTint="@color/primary_orange" android:textColor="@color/white" android:fontFamily="@font/poppins_family" android:textSize="18sp" android:textStyle="bold" android:layout_marginBottom="32dp"/>
 
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
+
