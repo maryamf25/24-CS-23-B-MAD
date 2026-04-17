@@ -14,6 +14,7 @@ class AddEditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_add_edit)
+        DataManager.loadData(this)
 
         // Initialize UI Elements for Wishlist
         val tvToolbarTitle = findViewById<TextView>(R.id.tvToolbarTitle)
@@ -50,7 +51,7 @@ class AddEditActivity : AppCompatActivity() {
             btnSave.text = "Update Details"
             etName.setText(existingRestaurant.name)
             etAddress.setText(existingRestaurant.address)
-            
+
             val cuisines = resources.getStringArray(R.array.cuisine_options)
             val index = cuisines.indexOf(existingRestaurant.cuisine)
             if (index >= 0) spinnerCuisine.setSelection(index)
@@ -71,15 +72,15 @@ class AddEditActivity : AppCompatActivity() {
 
             if (existingRestaurant.status == "visited") {
                 reviewedSection.visibility = android.view.View.VISIBLE
-                
+
                 sbEditRating.progress = existingRestaurant.rating
                 tvRatingLabel.text = "${existingRestaurant.rating}/5"
-                
+
                 etEditSpend.setText(existingRestaurant.spendAmount.toString())
-                
+
                 sbEditWorth.progress = existingRestaurant.worthRating
                 tvWorthLabel.text = "${existingRestaurant.worthRating}/5"
-                
+
                 etEditNotes.setText(existingRestaurant.notes)
             }
         }
@@ -150,10 +151,10 @@ class AddEditActivity : AppCompatActivity() {
             )
 
             if (existingRestaurant != null) {
-                DataManager.updateRestaurant(existingRestaurant.name, newRestaurant)
+                DataManager.updateRestaurant(this, existingRestaurant.name, newRestaurant)
                 Toast.makeText(this, "Restaurant Updated!", Toast.LENGTH_SHORT).show()
             } else {
-                DataManager.addRestaurant(newRestaurant)
+                DataManager.addRestaurant(this, newRestaurant)
                 Toast.makeText(this, "Added to Wishlist!", Toast.LENGTH_SHORT).show()
             }
 

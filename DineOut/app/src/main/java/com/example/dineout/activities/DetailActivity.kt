@@ -14,6 +14,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_detail)
+        DataManager.loadData(this)
 
         val resName = intent.getStringExtra("RES_NAME") ?: ""
         val restaurant = DataManager.getRestaurantByName(resName)
@@ -46,9 +47,9 @@ class DetailActivity : AppCompatActivity() {
             val address = "${restaurant.name} ${restaurant.address}"
             val gmmIntentUri = android.net.Uri.parse("geo:0,0?q=${android.net.Uri.encode(address)}")
             val mapIntent = android.content.Intent(android.content.Intent.ACTION_VIEW, gmmIntentUri)
-            
+
             mapIntent.setPackage("com.google.android.apps.maps")
-            
+
             if (mapIntent.resolveActivity(packageManager) != null) {
                 startActivity(mapIntent)
             } else {
@@ -84,7 +85,7 @@ class DetailActivity : AppCompatActivity() {
             val wrapper = android.view.ContextThemeWrapper(this, R.style.CustomPopupMenu)
             val popup = androidx.appcompat.widget.PopupMenu(wrapper, view)
             popup.inflate(R.menu.detail_menu)
-            
+
             // Force show icons in PopupMenu
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
                 popup.setForceShowIcon(true)
@@ -117,7 +118,7 @@ class DetailActivity : AppCompatActivity() {
                         true
                     }
                     R.id.action_delete -> {
-                        DataManager.deleteRestaurant(restaurant.name)
+                        DataManager.deleteRestaurant(this, restaurant.name)
                         Toast.makeText(this, "Restaurant Deleted!", Toast.LENGTH_SHORT).show()
                         finish()
                         true
@@ -176,7 +177,7 @@ class DetailActivity : AppCompatActivity() {
             val notes = etNotes.text.toString()
             val worthValue = sbWorth.progress
 
-            DataManager.markAsVisited(name, rating, notes, spendValue, worthValue)
+            DataManager.markAsVisited(this, name, rating, notes, spendValue, worthValue)
 
             Toast.makeText(this, "Added to Visited!", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
