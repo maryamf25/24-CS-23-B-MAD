@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        DataManager.loadSampleData()
+        DataManager.loadData(this)
 
         recyclerView = findViewById(R.id.recyclerView)
         tabLayout = findViewById(R.id.tabLayout)
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                     val currentList = DataManager.getByStatus(currentStatus)
                     if (pos !in currentList.indices) return
                     val name = currentList[pos].name
-                    DataManager.deleteRestaurant(name)
+                    DataManager.deleteRestaurant(this@MainActivity, name)
                     Toast.makeText(this@MainActivity, "$name Deleted!", Toast.LENGTH_SHORT).show()
                     loadFilteredData()
                 }
