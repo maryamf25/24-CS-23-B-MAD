@@ -22,4 +22,27 @@
         <item>Most Expensive</item>
         <item>Least Expensive</item>
     </string-array>
+
+    <string name="filter_screen_title">Filters</string>
+    <string name="filter_cuisine_label">Cuisine</string>
+    <string name="filter_best_for_label">Best for</string>
+    <string name="filter_price_label">Price range</string>
+    <string name="filter_apply">Apply</string>
+    <string name="filter_clear">Clear all</string>
+    <string name="filter_any">Any</string>
+
+    <string-array name="filter_best_for_options">
+        <item>Any</item>
+        <item>Family</item>
+        <item>Friends</item>
+        <item>Date Night</item>
+        <item>Solo</item>
+    </string-array>
+
+    <string-array name="filter_price_options">
+        <item>Any</item>
+        <item>$</item>
+        <item>$$</item>
+        <item>$$$</item>
+    </string-array>
 </resources>

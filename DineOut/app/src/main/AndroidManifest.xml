@@ -22,6 +22,9 @@
             android:name=".activities.AddEditActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.FilterActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.SplashActivity"
             android:exported="true">
             <intent-filter>
