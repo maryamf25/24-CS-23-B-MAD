@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_dark"
-
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -23,30 +22,52 @@
             android:background="@color/bg_dark"
             app:contentInsetStart="20dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:paddingTop="8dp"
                 android:paddingBottom="6dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/headerTitles"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="DineOut"
-                    android:textColor="@color/primary_orange"
-                    android:fontFamily="@font/hamburger"
-                    android:textSize="36sp"
-                    android:includeFontPadding="true"
-                    android:paddingTop="2dp" />
+                    android:layout_toStartOf="@id/btnOpenFilters"
+                    android:layout_alignParentStart="true"
+                    android:orientation="vertical"
+                    android:paddingEnd="8dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Discover &amp; Track Restaurants"
-                    android:textColor="@color/text_primary"
-                    android:textSize="14sp"  android:fontFamily="@font/poppins_family"/>
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DineOut"
+                        android:textColor="@color/primary_orange"
+                        android:fontFamily="@font/hamburger"
+                        android:textSize="36sp"
+                        android:includeFontPadding="true"
+                        android:paddingTop="2dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Discover &amp; Track Restaurants"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_family" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btnOpenFilters"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/filter_screen_title"
+                    android:padding="8dp"
+                    android:src="@android:drawable/ic_menu_sort_by_size"
+                    app:tint="@color/primary_orange" />
+            </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
@@ -150,14 +171,27 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:paddingHorizontal="12dp"
             android:paddingTop="8dp"
             android:clipToPadding="false"
             android:paddingBottom="80dp"/>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvNoResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="Nothing matches your filter! ✨"
+        android:textColor="@color/text_primary"
+        android:textSize="18sp"
+        android:alpha="0.7"
+        android:fontFamily="@font/poppins_family"
+        android:visibility="gone" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fabAdd"
@@ -175,4 +209,3 @@
         android:contentDescription="@string/add_restaurant"/>
 
 </RelativeLayout>
-
