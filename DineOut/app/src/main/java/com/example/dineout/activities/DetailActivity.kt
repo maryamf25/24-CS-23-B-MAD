@@ -14,6 +14,11 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_detail)
+        
+        // Set up back button
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbarDetail)
+        toolbar.setNavigationOnClickListener { finish() }
+        
         DataManager.loadData(this)
 
         val resName = intent.getStringExtra("RES_NAME") ?: ""
@@ -82,7 +87,7 @@ class DetailActivity : AppCompatActivity() {
 
         val btnOptions = findViewById<ImageView>(R.id.btnOptions)
         btnOptions.setOnClickListener { view ->
-            val wrapper = android.view.ContextThemeWrapper(this, R.style.CustomPopupMenu)
+            val wrapper = android.view.ContextThemeWrapper(this, R.style.CustomPopupMenuTheme)
             val popup = androidx.appcompat.widget.PopupMenu(wrapper, view)
             popup.inflate(R.menu.detail_menu)
 

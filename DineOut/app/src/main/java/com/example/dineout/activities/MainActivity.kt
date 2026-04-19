@@ -166,9 +166,11 @@ class MainActivity : AppCompatActivity() {
             fabAdd.visibility = View.GONE
             btnDecideForMe.visibility = View.GONE
 
-            val totalSpend = currentList.sumOf { it.spendAmount.toLong() }
+            val allVisitedList = DataManager.getByStatus("visited")
+            val totalSpend = allVisitedList.sumOf { it.spendAmount.toLong() }
+            
             tvTotalSpend.text = "Rs. $totalSpend"
-            tvSpendStats.text = "${currentList.size} outings"
+            tvSpendStats.text = "${allVisitedList.size} outings"
         } else {
             layoutBudgetDashboard.visibility = View.GONE
             fabAdd.visibility = View.VISIBLE
