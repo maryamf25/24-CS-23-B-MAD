@@ -14,6 +14,11 @@ class AddEditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_add_edit)
+        
+        // Set up back button
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        toolbar.setNavigationOnClickListener { finish() }
+        
         DataManager.loadData(this)
 
         // Initialize UI Elements for Wishlist
@@ -27,6 +32,12 @@ class AddEditActivity : AppCompatActivity() {
         val rbExpensive = findViewById<RadioButton>(R.id.rbExpensive)
         val etDish = findViewById<EditText>(R.id.etDish)
         val btnSave = findViewById<Button>(R.id.btnSave)
+
+        // Set up styled adapter for cuisine spinner
+        val cuisineChoices = resources.getStringArray(R.array.cuisine_options).toList()
+        val cuisineAdapter = ArrayAdapter(this, R.layout.spinner_item, cuisineChoices)
+        cuisineAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        spinnerCuisine.adapter = cuisineAdapter
 
         // Review Details UI
         val reviewedSection = findViewById<LinearLayout>(R.id.reviewedSection)

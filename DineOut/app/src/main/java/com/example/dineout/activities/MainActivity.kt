@@ -153,9 +153,12 @@ class MainActivity : AppCompatActivity() {
             layoutBudgetDashboard.visibility = View.VISIBLE
             fabAdd.visibility = View.GONE
             btnDecideForMe.visibility = View.GONE
-            val total = currentList.sumOf { it.spendAmount.toLong() }
-            tvTotalSpend.text = "Rs. $total"
-            tvSpendStats.text = "${currentList.size} outings"
+
+            val allVisitedList = DataManager.getByStatus("visited")
+            val totalSpend = allVisitedList.sumOf { it.spendAmount.toLong() }
+            
+            tvTotalSpend.text = "Rs. $totalSpend"
+            tvSpendStats.text = "${allVisitedList.size} outings"
         } else {
             layoutBudgetDashboard.visibility = View.GONE
             fabAdd.visibility = View.VISIBLE
@@ -176,7 +179,7 @@ class MainActivity : AppCompatActivity() {
 
         val pick = wishlist[Random.nextInt(wishlist.size)]
 
-        // Material 3 Dialog implementation
+        // Material 3 Dialog implementation with custom theme
         MaterialAlertDialogBuilder(this, R.style.DineOutDialog)
             .setTitle("DineOut")
             .setMessage("Today you're going to ${pick.name}!")

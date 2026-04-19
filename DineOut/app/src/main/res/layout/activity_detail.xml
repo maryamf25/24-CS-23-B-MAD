@@ -10,16 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginTop="32dp"
-        android:background="@color/bg_dark">
+        android:background="@color/bg_dark"
+        app:navigationIcon="?attr/homeAsUpIndicator">
 
         <TextView
+            android:id="@+id/tvToolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Restaurant Details"
-            android:textColor="@color/surface_dark"
+            android:textColor="@color/primary_orange"
             android:fontFamily="@font/hamburger"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:textSize="26sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"

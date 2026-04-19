@@ -36,15 +36,29 @@ class FilterActivity : AppCompatActivity() {
         spinnerPrice = findViewById(R.id.spinnerFilterPrice)
 
         val cuisineChoices = buildCuisineChoices()
-        spinnerCuisine.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, cuisineChoices)
+        val bestForChoices = resources.getStringArray(R.array.filter_best_for_options).toList()
+        val priceChoices = resources.getStringArray(R.array.filter_price_options).toList()
+
+        // Create styled adapters for each spinner
+        val cuisineAdapter = ArrayAdapter(this, R.layout.spinner_item, cuisineChoices)
+        cuisineAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        spinnerCuisine.adapter = cuisineAdapter
+
+        val bestForAdapter = ArrayAdapter(this, R.layout.spinner_item, bestForChoices)
+        bestForAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        spinnerBestFor.adapter = bestForAdapter
+
+        val priceAdapter = ArrayAdapter(this, R.layout.spinner_item, priceChoices)
+        priceAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        spinnerPrice.adapter = priceAdapter
 
         val initialCuisine = intent.getStringExtra(EXTRA_CUISINE).orEmpty()
         val initialBest = intent.getStringExtra(EXTRA_BEST_FOR).orEmpty()
         val initialPrice = intent.getStringExtra(EXTRA_PRICE).orEmpty()
 
         setSpinnerToValue(spinnerCuisine, cuisineChoices, initialCuisine)
-        setSpinnerToValue(spinnerBestFor, resources.getStringArray(R.array.filter_best_for_options), initialBest)
-        setSpinnerToValue(spinnerPrice, resources.getStringArray(R.array.filter_price_options), initialPrice)
+        setSpinnerToValue(spinnerBestFor, bestForChoices, initialBest)
+        setSpinnerToValue(spinnerPrice, priceChoices, initialPrice)
 
         findViewById<MaterialButton>(R.id.btnFilterApply).setOnClickListener { applyAndFinish() }
         findViewById<MaterialButton>(R.id.btnFilterClear).setOnClickListener { clearAndFinish() }

@@ -173,10 +173,11 @@ object DataManager {
 
     private fun getSampleData(): List<Restaurant> {
         return listOf(
-            Restaurant("Monal", "Pir Sohawa", "Pakistani", "$$$", "Cheese Naan", 4, "wishlist", "", "", "Family", "Must visit at night"),
-            Restaurant("Cheezious", "Johar Town", "Fast Food", "$$", "Crown Crust", 4, "visited", "12/03/2026", "8:00 PM", "Friends", "Best pizza in town", spendAmount = 1400, worthRating = 4),
-            Restaurant("BBQ Masters", "Defense", "BBQ", "$$", "Mixed Grill", 5, "visited", "10/03/2026", "7:30 PM", "Friends", "Amazing grilled meat", spendAmount = 2100, worthRating = 5),
-            Restaurant("Arcadian Cafe", "Gulberg", "Continental", "$$$", "Stuffed Chicken", 3, "wishlist", "", "", "Date Night", "Good ambiance")
+            Restaurant("Haveli Restaurant", "Badshahi Mosque, Walled City", "Pakistani", "$$$", "Mutton Karahi", 5, "visited", "12/04/2026", "8:30 PM", "Family", "Incredible view of Badshahi Mosque", spendAmount = 4500, worthRating = 5),
+            Restaurant("Cafe Aylanto", "MM Alam Road, Gulberg", "Continental", "$$$", "Moroccan Chicken", 5, "wishlist", "", "", "Date Night", "Premium dining experience"),
+            Restaurant("Daily Deli Co.", "Johar Town", "Fast Food", "$$", "Smash Burger", 4, "visited", "18/04/2026", "7:00 PM", "Friends", "Best juicy burgers in town", spendAmount = 1400, worthRating = 4),
+            Restaurant("Bhaiyya Kabab Shop", "Model Town", "BBQ", "$", "Beef Kabab", 4, "visited", "20/03/2026", "9:00 PM", "Family", "Legendary street food vibe", spendAmount = 600, worthRating = 5),
+            Restaurant("Monal Lahore", "Liberty Roundabout, Gulberg", "Mixed/Desi", "$$$", "Cheese Naan", 4, "wishlist", "", "", "Friends", "Great rooftop view at night")
         )
     }
 }

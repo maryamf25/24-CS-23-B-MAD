@@ -12,9 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/bg_dark"
-        app:navigationIcon="?attr/homeAsUpIndicator"
-        app:title="@string/filter_screen_title"
-        app:titleTextColor="@color/primary_orange" />
+        app:navigationIcon="?attr/homeAsUpIndicator">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_screen_title"
+            android:textColor="@color/primary_orange"
+            android:fontFamily="@font/hamburger"
+            android:textSize="32sp" />
+    </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -43,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/input_bg"
+                android:background="@drawable/spinner_bg"
                 android:paddingHorizontal="12dp" />
 
             <TextView
@@ -61,9 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/input_bg"
-                android:paddingHorizontal="12dp"
-                android:entries="@array/filter_best_for_options" />
+                android:background="@drawable/spinner_bg"
+                android:paddingHorizontal="12dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,9 +86,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="24dp"
-                android:background="@drawable/input_bg"
-                android:paddingHorizontal="12dp"
-                android:entries="@array/filter_price_options" />
+                android:background="@drawable/spinner_bg"
+                android:paddingHorizontal="12dp" />
         </LinearLayout>
     </ScrollView>
 

@@ -1,17 +1,25 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.DineOut" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:fontFamily">@font/poppins_family</item>
-        <item name="fontFamily">@font/poppins_family</item>
         <item name="android:windowBackground">@color/bg_dark</item>
+        
+        <item name="android:statusBarColor">@color/bg_dark</item>
+        <item name="android:windowLightStatusBar">true</item>
+        
         <item name="android:textColorPrimary">@color/text_primary</item>
         <item name="android:editTextColor">@color/text_primary</item>
+        <item name="android:colorControlNormal">@color/text_primary</item>
         <item name="colorPrimary">@color/primary_orange</item>
         <item name="colorAccent">@color/primary_orange</item>
         <item name="android:textColorHint">@color/text_secondary</item>
     </style>
 
     <style name="Theme.DineOut" parent="Base.Theme.DineOut" />
+    
+    <style name="Theme.Splash" parent="Theme.DineOut">
+        <item name="android:windowSplashScreenBackground" tools:targetApi="31">@color/bg_dark</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="31">@android:color/transparent</item>
+    </style>
     
     <style name="DarkPopupMenuTheme" parent="ThemeOverlay.AppCompat.Dark">
         <item name="android:colorBackground">@color/input_background</item>
@@ -26,9 +34,18 @@
     </style>
 
     <style name="CustomPopupMenu" parent="Widget.AppCompat.PopupMenu">
-        <item name="android:popupBackground">@color/divider_color</item>
+        <item name="android:popupBackground">@drawable/input_bg</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:fontFamily">@font/poppins_family</item>
+    </style>
+
+    <style name="CustomPopupMenuTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:popupBackground">@color/input_bg</item>
+        <item name="popupMenuBackground">@color/input_bg</item>
+        <item name="android:colorBackground">@color/input_bg</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">@font/poppins_family</item>
+        <item name="fontFamily">@font/poppins_family</item>
     </style>
 
     <style name="DineOutDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">

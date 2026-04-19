@@ -11,7 +11,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/bg_dark">
+        android:background="@color/bg_dark"
+        app:navigationIcon="?attr/homeAsUpIndicator">
 
         <TextView
             android:id="@+id/tvToolbarTitle"
@@ -40,7 +41,13 @@
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DETAILS" android:textColor="@color/text_primary" android:textSize="12sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp" android:fontFamily="@font/poppins_family"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cuisine Type" android:textColor="@color/text_primary" android:layout_marginBottom="4dp" android:textSize="13sp" android:fontFamily="@font/poppins_family"/>
-            <Spinner android:id="@+id/spinnerCuisine" android:layout_width="match_parent" android:layout_height="56dp" android:entries="@array/cuisine_options" android:background="@drawable/input_bg" android:layout_marginBottom="16dp" android:popupTheme="@style/DarkPopupMenuTheme"/>
+            <Spinner
+                android:id="@+id/spinnerCuisine"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/spinner_bg"
+                android:paddingHorizontal="12dp"
+                android:layout_marginBottom="16dp" />
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Price Range" android:textColor="@color/text_primary" android:layout_marginBottom="8dp" android:textSize="13sp" android:fontFamily="@font/poppins_family"/>
             <RadioGroup android:id="@+id/rgPrice" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="24dp" android:padding="4dp">

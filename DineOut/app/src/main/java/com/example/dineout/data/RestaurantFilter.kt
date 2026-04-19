@@ -28,11 +28,11 @@ object RestaurantFilter {
 
             // 3. Price Match mapping
             val matchesPrice = when {
-                price.isEmpty() || price == "All" -> true
-                price.contains("Cheap", true) -> res.priceRange == "$"
-                price.contains("Moderate", true) -> res.priceRange == "$$"
-                price.contains("Expensive", true) -> res.priceRange == "$$$"
-                else -> res.priceRange.contains(price, ignoreCase = true)
+                price.isEmpty() || price == "Any" -> true
+                price == "$" -> res.priceRange == "$"
+                price == "$$" -> res.priceRange == "$$"
+                price == "$$$" -> res.priceRange == "$$$"
+                else -> res.priceRange == price
             }
 
             matchesCuisine && matchesMustTry && matchesPrice
