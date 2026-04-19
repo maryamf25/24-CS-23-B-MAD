@@ -30,4 +30,25 @@
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:fontFamily">@font/poppins_family</item>
     </style>
+
+    <style name="DineOutDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:background">@color/bg_dark</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/DineOutDialogTitle</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/DineOutDialogBody</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DineOutDialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DineOutDialogButton</item>
+    </style>
+
+    <style name="DineOutDialogTitle" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textColor">@color/primary_orange</item>
+        <item name="android:fontFamily">@font/hamburger</item>
+    </style>
+
+    <style name="DineOutDialogBody" parent="MaterialAlertDialog.Material3.Body.Text">
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="DineOutDialogButton" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textColor">@color/primary_orange</item>
+    </style>
 </resources>
