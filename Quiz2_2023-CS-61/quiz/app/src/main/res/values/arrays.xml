@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="complaint_categories">
+        <item>IT</item>
+        <item>Library</item>
+        <item>Transport</item>
+        <item>Hostel</item>
+        <item>Accounts</item>
+        <item>Examination</item>
+        <item>Cafeteria</item>
+        <item>Administration</item>
+    </string-array>
+
+    <string-array name="priority_levels">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+        <item>Urgent</item>
+    </string-array>
+</resources>

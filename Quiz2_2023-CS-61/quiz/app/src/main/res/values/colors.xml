@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#1A73E8</color> <!-- Google Blue / Professional Blue -->
+    <color name="primary_dark">#174EA6</color>
+    <color name="primary_light">#E8F0FE</color>
+    <color name="secondary">#4285F4</color>
+    
+    <color name="bg_main">#F1F3F4</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#202124</color>
+    
+    <color name="text_primary">#202124</color>
+    <color name="text_secondary">#5F6368</color>
+    <color name="divider">#DADCE0</color>
+    
+    <color name="status_pending">#FBBC04</color> <!-- Professional Yellow -->
+    <color name="status_success">#34A853</color> <!-- Professional Green -->
+    <color name="status_error">#D93025</color> <!-- Professional Red -->
+    
+    <color name="priority_low">#34A853</color>
+    <color name="priority_medium">#FBBC04</color>
+    <color name="priority_high">#EA4335</color>
+    <color name="priority_urgent">#A50E0E</color>
+</resources>
