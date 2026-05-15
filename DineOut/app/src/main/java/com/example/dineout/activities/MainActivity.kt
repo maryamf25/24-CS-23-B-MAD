@@ -22,8 +22,15 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder // Correct 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.utils.ColorTemplate
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
-import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,6 +58,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvSpendStats: TextView
     private lateinit var homeContent: View
     private lateinit var profileContent: View
+    private lateinit var dashboardContent: View
+    private lateinit var pieChart: PieChart
+    private lateinit var barChart: BarChart
     private lateinit var bottomNav: BottomNavigationView
     private lateinit var tvProfileName: TextView
     private lateinit var tvProfileEmail: TextView
@@ -86,6 +96,9 @@ class MainActivity : AppCompatActivity() {
         tvSpendStats = findViewById(R.id.tvSpendStats)
         homeContent = findViewById(R.id.homeContent)
         profileContent = findViewById(R.id.profileContent)
+        dashboardContent = findViewById(R.id.dashboardContent)
+        pieChart = findViewById(R.id.pieChart)
+        barChart = findViewById(R.id.barChart)
         bottomNav = findViewById(R.id.bottomNav)
         tvProfileInitials = findViewById(R.id.tvProfileInitials)
         tvProfileName = findViewById(R.id.tvProfileName)
@@ -144,6 +157,7 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> showHome()
+                R.id.nav_dashboard -> showDashboard()
                 R.id.nav_profile -> showProfile()
             }
             true
@@ -191,7 +205,17 @@ class MainActivity : AppCompatActivity() {
         tabLayout.visibility = View.VISIBLE
         homeContent.visibility = View.VISIBLE
         profileContent.visibility = View.GONE
+        dashboardContent.visibility = View.GONE
         loadFilteredData()
+    }
+
+    private fun showDashboard() {
+        isProfileScreen = false
+        tabLayout.visibility = View.GONE
+        homeContent.visibility = View.GONE
+        profileContent.visibility = View.GONE
+        dashboardContent.visibility = View.VISIBLE
+        setupCharts()
     }
 
     private fun showProfile() {
@@ -199,10 +223,89 @@ class MainActivity : AppCompatActivity() {
         tabLayout.visibility = View.GONE
         homeContent.visibility = View.GONE
         profileContent.visibility = View.VISIBLE
+        dashboardContent.visibility = View.GONE
         tvNoResults.visibility = View.GONE
         fabAdd.visibility = View.GONE
         btnDecideForMe.visibility = View.GONE
         refreshProfile()
+    }
+
+    private fun setupCharts() {
+        val visitedList = DataManager.getByStatus("visited")
+        
+        // Pie Chart: Spending by Cuisine
+        val cuisineSpending = visitedList.groupBy { it.cuisine }
+            .mapValues { entry -> entry.value.sumOf { it.spendAmount }.toFloat() }
+
+        val pieEntries = cuisineSpending.map { PieEntry(it.value, it.key) }
+        val pieDataSet = PieDataSet(pieEntries, "").apply {
+            colors = ColorTemplate.MATERIAL_COLORS.toList()
+            valueTextSize = 14f
+            valueTextColor = android.graphics.Color.parseColor("#4A362B")
+        }
+        
+        pieChart.apply {
+            data = PieData(pieDataSet)
+            description.isEnabled = false
+            centerText = "Spending by Cuisine"
+            setCenterTextSize(16f)
+            setHoleColor(android.graphics.Color.TRANSPARENT)
+            legend.isEnabled = true
+            legend.textColor = android.graphics.Color.parseColor("#4A362B")
+            animateY(1000)
+            invalidate()
+        }
+
+        // Bar Chart: Monthly Spending
+        val monthlySpending = mutableMapOf<String, Float>()
+        val sdfInput = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val sdfOutput = SimpleDateFormat("MMM yyyy", Locale.getDefault())
+
+        visitedList.forEach { res ->
+            val dateStr = if (res.visitDate.isEmpty()) {
+                sdfInput.format(java.util.Date()) // Fallback to today
+            } else {
+                res.visitDate
+            }
+            
+            try {
+                val date = sdfInput.parse(dateStr)
+                if (date != null) {
+                    val monthYear = sdfOutput.format(date)
+                    monthlySpending[monthYear] = (monthlySpending[monthYear] ?: 0f) + res.spendAmount.toFloat()
+                }
+            } catch (e: Exception) {
+                // Skip only if the date is truly unparseable
+            }
+        }
+
+        val sortedMonths = monthlySpending.keys.sortedBy { sdfOutput.parse(it) }
+        val barEntries = sortedMonths.mapIndexed { index, month ->
+            BarEntry(index.toFloat(), monthlySpending[month] ?: 0f)
+        }
+
+        val barDataSet = BarDataSet(barEntries, "Monthly Spending (Rs.)").apply {
+            color = android.graphics.Color.parseColor("#DF8130")
+            valueTextColor = android.graphics.Color.parseColor("#4A362B")
+            valueTextSize = 10f
+        }
+
+        barChart.apply {
+            data = BarData(barDataSet)
+            description.isEnabled = false
+            xAxis.apply {
+                valueFormatter = IndexAxisValueFormatter(sortedMonths)
+                position = com.github.mikephil.charting.components.XAxis.XAxisPosition.BOTTOM
+                textColor = android.graphics.Color.parseColor("#4A362B")
+                setDrawGridLines(false)
+                granularity = 1f
+            }
+            axisLeft.textColor = android.graphics.Color.parseColor("#4A362B")
+            axisRight.isEnabled = false
+            legend.textColor = android.graphics.Color.parseColor("#4A362B")
+            animateY(1000)
+            invalidate()
+        }
     }
 
     private fun refreshProfile() {

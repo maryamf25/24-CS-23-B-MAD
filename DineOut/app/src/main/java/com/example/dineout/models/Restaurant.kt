@@ -8,7 +8,7 @@ data class Restaurant(
     val mustTryDish: String,
     var rating: Int,
     var status: String,
-    val visitDate: String,
+    var visitDate: String,
     val mealTime: String,
     val occasions: String,
     var notes: String,

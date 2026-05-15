@@ -15,8 +15,12 @@
   * Value for Money Rating (`Worth Rating`)
   * Your personal notes and ambiance review
 * **Individual Dish Tracking:** Rate not just the restaurant, but the specific dishes you had! Log dish names, course types (Appetizer, Main, Dessert), and whether you 'Would Order Again'.
+* **Advanced Analytics Dashboard:** Visualize your dining habits with interactive charts:
+  * **Cuisine Distribution:** Pie Chart showing spending across different cuisines.
+  * **Spending Trends:** Bar Chart tracking monthly expenditure to manage your budget.
 * **Filtering System:** Easily find what you are looking for by filtering through your personal entries.
-* **Local Persistent Storage:** Complete offline functionality. The app securely persists your data internally using file-system based JSON serialization so you don't lose any data when logging out or closing the app.
+* **Local Persistent Storage:** Complete offline functionality. The app uses a **Room SQLite Database** to securely persist your restaurants, dishes, and reviews.
+* **Media Integration:** Attach photos to your restaurant visits to keep a visual record of your dining experiences.
 
 ---
 
@@ -27,9 +31,10 @@
 * **UI Components:** 
   * Material Design 3 (M3)
   * Custom Tab Layouts
+  * MPAndroidChart for Data Visualization
   * Edge-to-Edge display
   * Modern Android Splash Screen API manipulation
-* **Data Storage:** Custom JSON File handling on Internal App Storage (No external database required)
+* **Data Storage:** Room Persistence Library (SQLite) with multi-user storage key support.
 * **Build System:** Gradle (Kotlin DSL)
 
 ---
@@ -68,7 +73,7 @@ DineOut/
 │   ├── java/com/example/dineout/
 │   │   ├── activities/     # Contains UI logic (MainActivity, AddEditActivity, etc.)
 │   │   ├── adapters/       # RecyclerView adapters for the UI lists
-│   │   ├── data/           # Contains DataManager for local JSON persistence
+│   │   ├── data/           # Contains DataManager and Room DB configuration (Entities, DAOs)
 │   │   └── models/         # Data classes (Restaurant, Dish)
 │   ├── res/                # XML layouts, drawables, fonts, and themes
 │   └── AndroidManifest.xml # App configuration and permissions

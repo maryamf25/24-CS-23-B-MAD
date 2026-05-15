@@ -85,13 +85,17 @@ object DataManager {
         val dao = AppDatabase.getInstance(context, AuthManager.currentStorageKey(context)).restaurantDao()
         val existing = dao.getByName(name)
         if (existing != null) {
+            val sdf = java.text.SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault())
+            val todayDate = sdf.format(java.util.Date())
+            
             val updated = existing.restaurant.copy(
                 rating = newRating,
                 status = "visited",
                 notes = newNotes,
                 spendAmount = spend,
-                worthRating = worth
-                ,photoPath = photoPath ?: existing.restaurant.photoPath
+                worthRating = worth,
+                visitDate = if (existing.restaurant.visitDate.isEmpty()) todayDate else existing.restaurant.visitDate,
+                photoPath = photoPath ?: existing.restaurant.photoPath
             )
             dao.updateRestaurant(updated)
             val index = restaurantList.indexOfFirst { it.name == name }
@@ -102,6 +106,7 @@ object DataManager {
                 r.notes = newNotes
                 r.spendAmount = spend
                 r.worthRating = worth
+                r.visitDate = updated.visitDate
                 if (!photoPath.isNullOrEmpty()) r.photoPath = photoPath
             }
         }
