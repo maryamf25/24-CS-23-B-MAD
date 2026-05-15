@@ -12,7 +12,6 @@ object DataManager {
     val restaurantList = ArrayList<Restaurant>()
 
     fun loadData(context: Context) {
-        // We clear the list first to ensure we don't have duplicates when refreshing
         val persisted = readFromJsonFile(context)
 
         restaurantList.clear()
@@ -20,7 +19,6 @@ object DataManager {
         if (persisted.isNotEmpty()) {
             restaurantList.addAll(persisted)
         } else {
-            // First run fallback: if no file exists, load samples and save them
             restaurantList.addAll(getSampleData())
             persistData(context)
         }
