@@ -68,7 +68,7 @@
                 android:background="@drawable/badge_gray"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
-                tools:text="$$"
+                tools:text="Rs Rs"
                 android:textColor="@color/text_muted"
                 android:textSize="11sp"
                 android:textStyle="bold"

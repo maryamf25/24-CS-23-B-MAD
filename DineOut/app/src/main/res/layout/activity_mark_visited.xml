@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mark as Visited"
+            android:textSize="20sp"
+            android:textColor="@color/primary_orange"
+            android:fontFamily="@font/hamburger"
+            android:layout_marginBottom="12dp" />
+
+        <ImageView
+            android:id="@+id/ivPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/input_bg"
+            android:src="@android:drawable/ic_menu_camera"
+            android:contentDescription="Photo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/btnCamera"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Camera 📸"
+                android:fontFamily="@font/poppins_family"
+                android:backgroundTint="@color/primary_orange"
+                android:textColor="@color/white" />
+
+            <Space android:layout_width="12dp" android:layout_height="1dp"/>
+
+            <Button
+                android:id="@+id/btnGallery"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Gallery"
+                android:fontFamily="@font/poppins_family"
+                android:backgroundTint="@color/surface_dark"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rating"
+                android:textColor="@color/text_muted"
+                android:fontFamily="@font/poppins_family" />
+
+            <TextView
+                android:id="@+id/tvMarkRatingValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:textColor="@color/primary_orange"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_family" />
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/sbMarkRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="4"
+            android:progress="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Woth the price?"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/text_muted"
+            android:fontFamily="@font/poppins_family" />
+
+        <RadioGroup
+            android:id="@+id/rgWorth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp">
+
+            <RadioButton
+                android:id="@+id/rbWorthYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textColor="@color/text_primary"
+                android:buttonTint="@color/primary_orange"
+                android:fontFamily="@font/poppins_family"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rbWorthNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="No"
+                android:textColor="@color/text_primary"
+                android:buttonTint="@color/primary_orange"
+                android:fontFamily="@font/poppins_family" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/etMarkSpend"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:hint="Amount spent (Rs.)"
+            android:inputType="number"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/input_bg"
+            android:paddingHorizontal="16dp"
+            android:fontFamily="@font/poppins_family" />
+
+        <EditText
+            android:id="@+id/etMarkNotes"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:hint="Write your experience..."
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/input_bg"
+            android:padding="16dp"
+            android:fontFamily="@font/poppins_family" />
+
+        <Button
+            android:id="@+id/btnMarkSave"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Save"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primary_orange"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_family" />
+    </LinearLayout>
+</ScrollView>

@@ -1,6 +1,11 @@
-package com.example.dineout.models
+package com.example.dineout.data.room
 
-data class Restaurant(
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "restaurants")
+data class RestaurantEntity(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val name: String,
     val address: String,
     val cuisine: String,
@@ -14,6 +19,5 @@ data class Restaurant(
     var notes: String,
     var spendAmount: Int = 0,
     var worthRating: Int = 0,
-    var photoPath: String = "",
-    val dishes: MutableList<Dish> = mutableListOf()
+    var photoPath: String = ""
 )

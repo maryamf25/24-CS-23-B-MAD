@@ -29,9 +29,9 @@ object RestaurantFilter {
             // 3. Price Match mapping
             val matchesPrice = when {
                 price.isEmpty() || price == "Any" -> true
-                price == "$" -> res.priceRange == "$"
-                price == "$$" -> res.priceRange == "$$"
-                price == "$$$" -> res.priceRange == "$$$"
+                price == "Rs" -> res.priceRange == "Rs"
+                price == "Rs Rs" -> res.priceRange == "Rs Rs"
+                price == "Rs Rs Rs" -> res.priceRange == "Rs Rs Rs"
                 else -> res.priceRange == price
             }
 

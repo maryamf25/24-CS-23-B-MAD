@@ -68,9 +68,9 @@ class AddEditActivity : AppCompatActivity() {
             if (index >= 0) spinnerCuisine.setSelection(index)
 
             when (existingRestaurant.priceRange) {
-                "$" -> rbCheap.isChecked = true
-                "$$" -> rbMedium.isChecked = true
-                "$$$" -> rbExpensive.isChecked = true
+                "Rs" -> rbCheap.isChecked = true
+                "Rs Rs" -> rbMedium.isChecked = true
+                "Rs Rs Rs" -> rbExpensive.isChecked = true
             }
 
             etDish.setText(existingRestaurant.mustTryDish)
@@ -119,10 +119,10 @@ class AddEditActivity : AppCompatActivity() {
             val cuisine = spinnerCuisine.selectedItem.toString()
 
             val priceRange = when (rgPrice.checkedRadioButtonId) {
-                R.id.rbCheap -> "$"
-                R.id.rbMedium -> "$$"
-                R.id.rbExpensive -> "$$$"
-                else -> "$"
+                R.id.rbCheap -> "Rs"
+                R.id.rbMedium -> "Rs Rs"
+                R.id.rbExpensive -> "Rs Rs Rs"
+                else -> "Rs"
             }
 
             val dish = etDish.text.toString()

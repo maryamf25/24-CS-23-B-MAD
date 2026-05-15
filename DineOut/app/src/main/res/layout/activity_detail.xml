@@ -48,12 +48,22 @@
         android:layout_height="match_parent"
         android:layout_below="@id/toolbarDetail"
         android:layout_above="@id/btnMarkVisited"
-        android:padding="24dp">
+        android:padding="24dp"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDetailPhotos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:visibility="gone"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
 
             <TextView
                 android:id="@+id/tvDetailName"
@@ -72,12 +82,14 @@
                 android:layout_height="wrap_content"
                 android:text="📍 Pir Sohawa, Islamabad"
                 android:textColor="@color/text_muted"
-                android:textSize="16sp"
+                android:textSize="@dimen/body_text_size"
                 android:layout_marginBottom="24dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:fontFamily="@font/poppins_family"
-                android:background="?attr/selectableItemBackground" />
+                android:background="?attr/selectableItemBackground"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/text_primary" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -102,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Price" android:textColor="@color/text_muted" android:textSize="12sp" android:fontFamily="@font/poppins_family" />
-                    <TextView android:id="@+id/tvDetailPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$$$" android:textColor="@color/primary_orange" android:textSize="18sp" android:textStyle="bold" android:fontFamily="@font/poppins_family" />
+                    <TextView android:id="@+id/tvDetailPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rs Rs Rs" android:textColor="@color/primary_orange" android:textSize="18sp" android:textStyle="bold" android:fontFamily="@font/poppins_family" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -160,11 +172,14 @@
                         android:id="@+id/tvDetailRating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="⭐ 4/5"
+                        android:text="4/5"
                         android:textColor="@color/primary_orange"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:fontFamily="@font/poppins_family" />
+                        android:fontFamily="@font/poppins_family"
+                        android:drawableStart="@android:drawable/btn_star_big_on"
+                        android:drawablePadding="6dp"
+                        android:drawableTint="@color/primary_orange" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -209,7 +224,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Value for Money"
+                        android:text="Woth the price?"
                         android:textColor="@color/text_muted"
                         android:textSize="14sp"
                         android:fontFamily="@font/poppins_family" />
@@ -218,11 +233,14 @@
                         android:id="@+id/tvDetailWorth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="★★★★☆"
+                        android:text="4/5"
                         android:textColor="@color/primary_orange"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:fontFamily="@font/poppins_family" />
+                        android:fontFamily="@font/poppins_family"
+                        android:drawableStart="@android:drawable/btn_star_big_on"
+                        android:drawablePadding="6dp"
+                        android:drawableTint="@color/primary_orange" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -249,7 +267,7 @@
                         android:layout_height="wrap_content"
                         android:text="Food was awesome!"
                         android:textColor="@color/text_primary"
-                        android:textSize="15sp"
+                        android:textSize="@dimen/body_text_size"
                         android:lineSpacingExtra="4dp"
                         android:fontFamily="@font/poppins_family" />
                 </LinearLayout>

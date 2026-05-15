@@ -7,6 +7,7 @@ import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dineout.R
+import com.example.dineout.auth.AuthManager
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +16,8 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            val nextScreen = if (AuthManager.isLoggedIn(this)) MainActivity::class.java else LoginActivity::class.java
+            startActivity(Intent(this, nextScreen))
             finish()
         }, 2500)
     }

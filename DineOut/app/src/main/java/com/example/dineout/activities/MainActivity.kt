@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dineout.R
+import com.example.dineout.auth.AuthManager
 import com.example.dineout.adapters.RestaurantAdapter
 import com.example.dineout.data.DataManager
 import com.example.dineout.data.RestaurantFilter
@@ -19,8 +20,10 @@ import com.example.dineout.models.Restaurant
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder // Correct Dialog Import
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import kotlin.random.Random
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,12 +49,31 @@ class MainActivity : AppCompatActivity() {
     private lateinit var layoutBudgetDashboard: View
     private lateinit var tvTotalSpend: TextView
     private lateinit var tvSpendStats: TextView
+    private lateinit var homeContent: View
+    private lateinit var profileContent: View
+    private lateinit var bottomNav: BottomNavigationView
+    private lateinit var tvProfileName: TextView
+    private lateinit var tvProfileEmail: TextView
+    private lateinit var tvProfileInitials: TextView
+    private lateinit var tvProfileWishlistCount: TextView
+    private lateinit var tvProfileVisitedCount: TextView
     private lateinit var tvNoResults: TextView // Fixed missing declaration
     private lateinit var fabAdd: ExtendedFloatingActionButton
     private lateinit var btnDecideForMe: MaterialButton
+    private lateinit var btnProfileAdd: MaterialButton
+    private var isProfileScreen: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (!AuthManager.isLoggedIn(this)) {
+            startActivity(Intent(this, LoginActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            })
+            finish()
+            return
+        }
+
         setContentView(R.layout.activity_main)
 
         DataManager.loadData(this)
@@ -62,9 +84,28 @@ class MainActivity : AppCompatActivity() {
         layoutBudgetDashboard = findViewById(R.id.layoutBudgetDashboard)
         tvTotalSpend = findViewById(R.id.tvTotalSpend)
         tvSpendStats = findViewById(R.id.tvSpendStats)
+        homeContent = findViewById(R.id.homeContent)
+        profileContent = findViewById(R.id.profileContent)
+        bottomNav = findViewById(R.id.bottomNav)
+        tvProfileInitials = findViewById(R.id.tvProfileInitials)
+        tvProfileName = findViewById(R.id.tvProfileName)
+        tvProfileEmail = findViewById(R.id.tvProfileEmail)
+        tvProfileWishlistCount = findViewById(R.id.tvProfileWishlistCount)
+        tvProfileVisitedCount = findViewById(R.id.tvProfileVisitedCount)
         tvNoResults = findViewById(R.id.tvNoResults)
         fabAdd = findViewById(R.id.fabAdd)
         btnDecideForMe = findViewById(R.id.btnDecideForMe)
+        btnProfileAdd = findViewById(R.id.btnProfileAdd)
+        findViewById<MaterialButton>(R.id.btnLogout).setOnClickListener {
+            AuthManager.logout(this)
+            startActivity(Intent(this, LoginActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            })
+            finish()
+        }
+        btnProfileAdd.setOnClickListener {
+            startActivity(Intent(this, AddEditActivity::class.java))
+        }
 
         findViewById<ImageButton>(R.id.btnOpenFilters).setOnClickListener {
             val i = Intent(this, FilterActivity::class.java).apply {
@@ -100,6 +141,15 @@ class MainActivity : AppCompatActivity() {
 
         btnDecideForMe.setOnClickListener { showDecideForMeDialog() }
 
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> showHome()
+                R.id.nav_profile -> showProfile()
+            }
+            true
+        }
+        bottomNav.selectedItemId = R.id.nav_home
+
         loadFilteredData()
     }
 
@@ -121,8 +171,56 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        if (!AuthManager.isLoggedIn(this)) {
+            startActivity(Intent(this, LoginActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            })
+            finish()
+            return
+        }
         DataManager.loadData(this)
+        if (isProfileScreen) {
+            showProfile()
+        } else {
+            showHome()
+        }
+    }
+
+    private fun showHome() {
+        isProfileScreen = false
+        tabLayout.visibility = View.VISIBLE
+        homeContent.visibility = View.VISIBLE
+        profileContent.visibility = View.GONE
         loadFilteredData()
+    }
+
+    private fun showProfile() {
+        isProfileScreen = true
+        tabLayout.visibility = View.GONE
+        homeContent.visibility = View.GONE
+        profileContent.visibility = View.VISIBLE
+        tvNoResults.visibility = View.GONE
+        fabAdd.visibility = View.GONE
+        btnDecideForMe.visibility = View.GONE
+        refreshProfile()
+    }
+
+    private fun refreshProfile() {
+        val name = AuthManager.currentUserName(this).ifBlank { "Food Explorer" }
+        tvProfileName.text = name
+        tvProfileEmail.text = AuthManager.currentUserEmail(this)
+        tvProfileInitials.text = getInitials(name)
+        tvProfileWishlistCount.text = DataManager.getByStatus("wishlist").size.toString()
+        tvProfileVisitedCount.text = DataManager.getByStatus("visited").size.toString()
+    }
+
+    private fun getInitials(name: String): String {
+        val parts = name.trim().split(Regex("\\s+")).filter { it.isNotBlank() }
+        if (parts.isEmpty()) return "U"
+        return when {
+            parts.size == 1 -> parts[0].take(2).uppercase(Locale.getDefault())
+            else -> parts.take(2).joinToString("") { part -> part.first().uppercaseChar().toString() }
+        }
     }
 
     private fun displayedListForCurrentTab(): ArrayList<Restaurant> {
@@ -142,7 +240,7 @@ class MainActivity : AppCompatActivity() {
         if (currentList.isEmpty()) {
             tvNoResults.visibility = View.VISIBLE
             recyclerView.visibility = View.GONE
-            tvNoResults.text = if (currentStatus == "wishlist") "No results in Wishlist ✨" else "No results in Visited 📍"
+            tvNoResults.text = if (currentStatus == "wishlist") "No results in Wishlist" else "No results in Visited"
         } else {
             tvNoResults.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE

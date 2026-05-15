@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DineOut">
         <activity
-            android:name=".data.Room"
+            android:name=".activities.SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
@@ -25,6 +28,9 @@
             android:exported="false" />
         <activity
             android:name=".activities.FilterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MarkVisitedActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SplashActivity"

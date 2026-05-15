@@ -3,6 +3,17 @@
     <string name="visited">Visited</string>
     <string name="wishlist">Wishlist</string>
     <string name="add_restaurant">Add Restaurant</string>
+    <string name="login_title">Welcome back</string>
+    <string name="signup_title">Create account</string>
+    <string name="auth_subtitle">Save your favorite food spots in DineOut.</string>
+    <string name="auth_login_button">Log in</string>
+    <string name="auth_signup_button">Sign up</string>
+    <string name="auth_login_link">Already have an account? Log in</string>
+    <string name="auth_signup_link">New here? Create an account</string>
+    <string name="auth_name_hint">Full name</string>
+    <string name="auth_email_hint">Email</string>
+    <string name="auth_password_hint">Password</string>
+    <string name="auth_confirm_password_hint">Confirm password</string>
 
     <string-array name="cuisine_options">
         <item>All Cuisines</item>
@@ -15,7 +26,7 @@
         <item>Cafe / Desserts</item>
     </string-array>
     <string name="cuisine_price_format">%1$s • %2$s</string>
-    <string name="rating_format">⭐ %1$d/5</string>
+    <string name="rating_format">%1$d/5</string>
     <string name="must_try_format">Must Try: %1$s</string>
     <string-array name="sort_options">
         <item>Default</item>
@@ -41,8 +52,8 @@
 
     <string-array name="filter_price_options">
         <item>Any</item>
-        <item>$</item>
-        <item>$$</item>
-        <item>$$$</item>
+        <item>Rs</item>
+        <item>Rs Rs</item>
+        <item>Rs Rs Rs</item>
     </string-array>
 </resources>
